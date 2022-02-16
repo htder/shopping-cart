@@ -1,19 +1,17 @@
-{
-  "items": {
-    "apple": {
+[{
+ 
       "name": "Apple",
       "price": "2.00",
       "desc": "green apple"
     },
-    "orange": {
+    {
       "name": "Orange",
       "price": "4.00",
       "desc": "orange orange"
     },
-    "pear": {
+    {
       "name": "Pear",
       "price": "1.50",
       "desc": "yellow pear"
     }
-  }
-}
+]
