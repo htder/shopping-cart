@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RouteSwitch from './App';
+import RouteSwitch from './RouteSwitch.js';
 
 ReactDOM.render(
   <React.StrictMode>

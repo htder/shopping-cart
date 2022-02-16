@@ -1,17 +1,18 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Homepage from './components/Homepage.js';
+import Navigation from './components/Navigation.js';
 import Shoppage from './components/Shoppage.js';
 import Cart from './components/Cart.js';
-import Toolbar from './components/Toolbar.js';
+import Home from './components/Home.js';
 
 function RouteSwitch() {
   return (
     <BrowserRouter>
-      <Toolbar />
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/shop" element={<Shoppage />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<Home />} /> 
+          <Route path="/shop" element={<Shoppage />} />
+          <Route path="/cart" element={<Cart />} />
+        </Route>
       </Routes>
 
     </BrowserRouter>
