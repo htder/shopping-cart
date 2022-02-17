@@ -48,7 +48,7 @@ function RouteSwitch() {
       <nav>
         <Link to="/">Home</Link>
         <Link to="/shop">Shop</Link>
-        <Link to="/cart">Cart {getQuantityBasket() ? getQuantityBasket() : ""} </Link>
+        <Link to="/cart">Cart {getQuantityBasket()} </Link>
         <p>Total Price: £{calculateTotalBasket()}</p>
       </nav>
       <Routes>
