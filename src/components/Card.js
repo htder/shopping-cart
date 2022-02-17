@@ -44,12 +44,19 @@ const Card = (props) => {
   } else {
     icon = peach;
   }
+
+  const formatter = new Intl.NumberFormat('en-UK', {
+    style: 'currency',
+    currency: 'GBP',
+    minimumFractionDigits: 2
+  });
+
   return (
     <div className="card">
       <div>
         <img src={icon} style={{width: "100%"}} alt="apple"/>
         <h1 className="item-name">{props.name}</h1>
-        <p className="price">£{props.price}</p>
+        <p className="price">{formatter.format(props.price)}</p>
         <p><i>{props.desc}</i></p>
         <div className="quantity">
           <input type="number" value={quantity} onChange={handleChange} className="input-increment"/>

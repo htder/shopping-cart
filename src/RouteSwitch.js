@@ -46,6 +46,12 @@ function RouteSwitch() {
     return total;
   }
 
+  const formatter = new Intl.NumberFormat('en-UK', {
+    style: 'currency',
+    currency: 'GBP',
+    minimumFractionDigits: 2
+  });
+
   return (
     <BrowserRouter>
       <nav className="navbar">
@@ -53,11 +59,9 @@ function RouteSwitch() {
         <div className="links-navbar">
           <Link to="/" className="link active">Home</Link>
           <Link to="/shop" className="link active">Shop</Link>
-          <Link to="/cart" className="link active border">Cart 
-             {/* <p className="item-quantity lower-navbar">Items: {getQuantityBasket()}</p> */}
-          </Link>
+          <Link to="/cart" className="link active border">Cart</Link>
           <p className="item-quantity link">Items: {getQuantityBasket()}</p>
-          <p className="link">Total: £{calculateTotalBasket()}</p>
+          <p className="link">Total: {formatter.format(calculateTotalBasket())}</p>
         </div>
       </nav>
       <Routes>

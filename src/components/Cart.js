@@ -61,6 +61,13 @@ const Cart = (props) => {
     }
     return image;
   }
+
+  const formatter = new Intl.NumberFormat('en-UK', {
+    style: 'currency',
+    currency: 'GBP',
+    minimumFractionDigits: 2
+  });
+
   const itemCards = () => {
     const prices = getPriceMap();
     return Object.keys(props.basket[0])
@@ -73,9 +80,9 @@ const Cart = (props) => {
               <h3 className="cart-title">{item}</h3>
               <div className="cart-details">
                 <p>Quantity: {getQuantityItem(item)}</p>
-                <p>£{prices.get(item)}</p>
+                <p>{formatter.format(prices.get(item))}</p>
               </div>
-              <p className="cart-total">Total: £{calculateTotalItem(item)}</p>
+              <p className="cart-total">Total: {formatter.format(calculateTotalItem(item))}</p>
             </div>
           </div>
         );
@@ -84,7 +91,7 @@ const Cart = (props) => {
 
   return (
     <div className="cart">
-      <h1>Your Shopping Cart - Total £{calculateTotalBasket()}</h1>
+      <h1>Your Shopping Cart - Total {formatter.format(calculateTotalBasket())}</h1>
       <div className="cart-container">
         {itemCards()}
       </div>
