@@ -1,9 +1,6 @@
 import data from '../data.json';
 
-
 const Cart = (props) => {
-
-  const itemCards = {};
 
   function getQuantityItem(item) {
     let quantity = 0;
@@ -35,12 +32,25 @@ const Cart = (props) => {
     return total;
   }
 
+  const itemCards = () => {
+    const prices = getPriceMap();
+    return Object.keys(props.basket[0])
+      .map(item => {
+        return (
+          <div key={item}>
+            <h3>{item}</h3>
+            <p>Quantity: {getQuantityItem(item)}</p>
+            <p>Price: {prices.get(item)}</p>
+            <p>Total Price: {calculateTotalItem(item)}</p>
+          </div>
+        );
+    });
+  };
+
   return (
     <div>
-      {console.log(getQuantityItem("Apple"))}
-      {console.log(calculateTotalItem("Apple"))}
       <h1>Cart</h1>
-      {console.log(props.basket)}
+      {itemCards()}
     </div>
   );
 };
