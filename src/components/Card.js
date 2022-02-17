@@ -48,15 +48,19 @@ const Card = (props) => {
     <div className="card">
       <div>
         <img src={icon} style={{width: "100%"}} alt="apple"/>
-        <h1>{props.name}</h1>
-        <p className="price">{props.price}</p>
-        <p>{props.desc}</p>
+        <h1 className="item-name">{props.name}</h1>
+        <p className="price">£{props.price}</p>
+        <p><i>{props.desc}</i></p>
         <div className="quantity">
-          <button onClick={increaseQuantity}>plus</button>
-          <input type="number" value={quantity} onChange={handleChange}/>
-          <button onClick={decreaseQuantity}>minus</button>
+          <input type="number" value={quantity} onChange={handleChange} className="input-increment"/>
+          <div className="button-increment">
+            <button onClick={decreaseQuantity} className="increment">-</button>
+            <button onClick={increaseQuantity} className="increment">+</button>
+          </div> 
         </div>
-        <p><button onClick={() => addToCart()}>Add to Cart</button></p>
+        <div className="add-button">
+          <button className="add-to-cart-button" onClick={() => addToCart()}>Add to Cart</button>
+        </div>
       </div>
     </div>
   )

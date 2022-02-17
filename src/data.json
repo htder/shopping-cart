@@ -1,14 +1,14 @@
 [
   {"name": "Apple",
     "price": "2.00",
-    "desc": "green apple"},
+    "desc": "red apple"},
   {"name": "Orange",
     "price": "4.00",
     "desc": "orange orange"},
   {"name": "Pear",
     "price": "1.50",
-    "desc": "yellow pear"},
+    "desc": "green pear"},
   {"name": "Peach",
     "price": "5.00",
-    "desc": "fluffy peach"}
+    "desc": "pink? peach"}
 ]

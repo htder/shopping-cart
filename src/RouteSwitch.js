@@ -49,7 +49,7 @@ function RouteSwitch() {
   return (
     <BrowserRouter>
       <nav className="navbar">
-        <img src={icon} className="icon" alt="icon" />
+        <Link to="/" className="icon"> <img src={icon} className="icon" alt="icon" /> </Link>
         <div className="links-navbar">
           <Link to="/" className="link">Home</Link>
           <Link to="/shop" className="link">Shop</Link>

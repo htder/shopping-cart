@@ -1,4 +1,8 @@
 import data from '../data.json';
+import apple from '../images/apple.jpg';
+import pear from '../images/pear.jpg';
+import orange from '../images/orange.jpg';
+import peach from '../images/peach.jpg';
 
 const Cart = (props) => {
 
@@ -32,25 +36,44 @@ const Cart = (props) => {
     return total;
   }
 
+  function setImage(item) {
+    let image;
+    if (item === "Apple") {
+      image = apple;
+    } else if (item === "Pear") {
+      image = pear;
+    } else if (item === "Orange") {
+      image = orange;
+    } else {
+      image = peach;
+    }
+    return image;
+  }
   const itemCards = () => {
     const prices = getPriceMap();
     return Object.keys(props.basket[0])
       .map(item => {
+        const image = setImage(item);
         return (
           <div key={item}>
-            <h3>{item}</h3>
-            <p>Quantity: {getQuantityItem(item)}</p>
-            <p>Price: {prices.get(item)}</p>
-            <p>Total Price: {calculateTotalItem(item)}</p>
+            <img src={image} alt="fruit" className="cart-image"/>
+            <div>
+              <h3>{item}</h3>
+              <p>Quantity: {getQuantityItem(item)}</p>
+              <p>Price: {prices.get(item)}</p>
+              <p>Total Price: {calculateTotalItem(item)}</p>
+            </div>
           </div>
         );
     });
   };
 
   return (
-    <div>
-      <h1>Cart</h1>
-      {itemCards()}
+    <div className="cart">
+      <h1>Your Shopping Cart</h1>
+      <div className="cart-container">
+        {itemCards()}
+      </div>
     </div>
   );
 };
