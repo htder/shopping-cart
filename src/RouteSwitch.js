@@ -6,13 +6,11 @@ import Home from './components/Home.js';
 import data from './data.json';
 
 function RouteSwitch() {
-  console.log(data);
-
-  const [basket, setBasket] = useState([{"Apple": 1, "Orange": 2}]);
+  const [basket, setBasket] = useState([{}]);
 
   function addToBasket(name, quantity) {
     setBasket([{
-      ...basket,
+      ...basket[0],
       [name]: quantity,
     }]) 
   }
@@ -20,9 +18,9 @@ function RouteSwitch() {
   function getQuantityBasket() {
     let quantity = 0;
     for (const key in basket[0]) {
-      quantity += basket[0][key];
+      quantity += +basket[0][key];
     }
-    return quantity;
+    return +quantity;
   }
 
   function getPriceMap() {
@@ -38,7 +36,9 @@ function RouteSwitch() {
     let total = 0;
 
     for (const key in basket[0]) {
-      total += +prices.get(key);
+      if (basket[0][key]) {
+        total += basket[0][key] * (+prices.get(key));
+      }
     }
     return total;
   }
@@ -48,13 +48,13 @@ function RouteSwitch() {
       <nav>
         <Link to="/">Home</Link>
         <Link to="/shop">Shop</Link>
-        <Link to="/cart">Cart {getQuantityBasket()}</Link>
+        <Link to="/cart">Cart {getQuantityBasket()} </Link>
         <p>Total Price: £{calculateTotalBasket()}</p>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/shop" element={<Shop handleQuantityChange={addToBasket} basket={basket}/>} />
+        <Route path="/cart" element={<Cart basket={basket} />} />
       </Routes>
     </BrowserRouter>
   );

@@ -2,7 +2,7 @@ import '../App.css';
 import Card from './Card.js';
 import data from '../data.json';
 
-const Shop = () => {
+const Shop = (props) => {
   const itemCards = data.map(item => {
     return (
       <Card 
@@ -10,6 +10,8 @@ const Shop = () => {
         name={item.name}
         price={item.price}
         desc={item.desc}
+        quantityChange={props.handleQuantityChange}
+        basket={props.basket}
       />
     )
   });
