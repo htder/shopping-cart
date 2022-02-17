@@ -36,6 +36,18 @@ const Cart = (props) => {
     return total;
   }
 
+  function calculateTotalBasket() {
+    const prices = getPriceMap();
+    let total = 0;
+
+    for (const key in props.basket[0]) {
+      if (props.basket[0][key]) {
+        total += props.basket[0][key] * (+prices.get(key));
+      }
+    }
+    return total;
+  }
+
   function setImage(item) {
     let image;
     if (item === "Apple") {
@@ -55,13 +67,15 @@ const Cart = (props) => {
       .map(item => {
         const image = setImage(item);
         return (
-          <div key={item}>
+          <div key={item} className="cart-row">
             <img src={image} alt="fruit" className="cart-image"/>
             <div>
-              <h3>{item}</h3>
-              <p>Quantity: {getQuantityItem(item)}</p>
-              <p>Price: {prices.get(item)}</p>
-              <p>Total Price: {calculateTotalItem(item)}</p>
+              <h3 className="cart-title">{item}</h3>
+              <div className="cart-details">
+                <p>Quantity: {getQuantityItem(item)}</p>
+                <p>£{prices.get(item)}</p>
+              </div>
+              <p className="cart-total">Total: £{calculateTotalItem(item)}</p>
             </div>
           </div>
         );
@@ -70,7 +84,7 @@ const Cart = (props) => {
 
   return (
     <div className="cart">
-      <h1>Your Shopping Cart</h1>
+      <h1>Your Shopping Cart - Total £{calculateTotalBasket()}</h1>
       <div className="cart-container">
         {itemCards()}
       </div>

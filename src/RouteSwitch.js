@@ -51,15 +51,13 @@ function RouteSwitch() {
       <nav className="navbar">
         <Link to="/" className="icon"> <img src={icon} className="icon" alt="icon" /> </Link>
         <div className="links-navbar">
-          <Link to="/" className="link">Home</Link>
-          <Link to="/shop" className="link">Shop</Link>
-          <Link to="/cart" className="link">Cart 
-             <p className="item-quantity lower-navbar">{getQuantityBasket()}</p>
+          <Link to="/" className="link active">Home</Link>
+          <Link to="/shop" className="link active">Shop</Link>
+          <Link to="/cart" className="link active border">Cart 
+             {/* <p className="item-quantity lower-navbar">Items: {getQuantityBasket()}</p> */}
           </Link>
-          <div className="link">
-            <p>Total</p>
-            <p className="lower-navbar">£{calculateTotalBasket()}</p>
-          </div>
+          <p className="item-quantity link">Items: {getQuantityBasket()}</p>
+          <p className="link">Total: £{calculateTotalBasket()}</p>
         </div>
       </nav>
       <Routes>
