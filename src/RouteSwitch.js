@@ -4,6 +4,9 @@ import Shop from './components/Shop.js';
 import Cart from './components/Cart.js';
 import Home from './components/Home.js';
 import data from './data.json';
+import icon from './images/fruit.png';
+
+import './reset.css';
 
 function RouteSwitch() {
   const [basket, setBasket] = useState([{}]);
@@ -45,11 +48,19 @@ function RouteSwitch() {
 
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/shop">Shop</Link>
-        <Link to="/cart">Cart {getQuantityBasket()} </Link>
-        <p>Total Price: £{calculateTotalBasket()}</p>
+      <nav className="navbar">
+        <img src={icon} className="icon" alt="icon" />
+        <div className="links-navbar">
+          <Link to="/" className="link">Home</Link>
+          <Link to="/shop" className="link">Shop</Link>
+          <Link to="/cart" className="link">Cart 
+             <p className="item-quantity lower-navbar">{getQuantityBasket()}</p>
+          </Link>
+          <div className="link">
+            <p>Total</p>
+            <p className="lower-navbar">£{calculateTotalBasket()}</p>
+          </div>
+        </div>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
