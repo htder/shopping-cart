@@ -17,8 +17,7 @@ const Shop = (props) => {
   });
 
   return (
-    <div>
-      <h1>Shop</h1>
+    <div className="shop-container">
       <div className="card-container">
         {itemCards}
       </div>

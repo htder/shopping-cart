@@ -1,4 +1,9 @@
 import React, {useState} from 'react';
+import apple from '../images/apple.jpg';
+import pear from '../images/pear.jpg';
+import orange from '../images/orange.jpg';
+import peach from '../images/peach.jpg';
+
 const Card = (props) => {
 
   function getQuantityItem(item) {
@@ -29,9 +34,20 @@ const Card = (props) => {
     props.quantityChange(props.name, quantity);
   }
   
+  let icon;
+  if (props.name === "Apple") {
+    icon = apple;
+  } else if (props.name === "Pear") {
+    icon = pear;
+  } else if (props.name === "Orange") {
+    icon = orange;
+  } else {
+    icon = peach;
+  }
   return (
     <div className="card">
       <div>
+        <img src={icon} style={{width: "100%"}} alt="apple"/>
         <h1>{props.name}</h1>
         <p className="price">{props.price}</p>
         <p>{props.desc}</p>
